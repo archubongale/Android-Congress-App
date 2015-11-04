@@ -1,10 +1,12 @@
-package com.example.archana.congress;
+package com.example.archana.congress.models;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.example.archana.congress.R;
 
 /**
  * Created by Guest on 11/3/15.
