@@ -68,4 +68,5 @@ public class Representative {
     public void setOffice(String office) {
         mOffice = office;
     }
+
 }

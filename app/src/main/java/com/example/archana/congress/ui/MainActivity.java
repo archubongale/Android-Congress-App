@@ -3,8 +3,10 @@ package com.example.archana.congress.ui;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.archana.congress.models.AlertDialogFragment;
 import com.example.archana.congress.R;
@@ -45,6 +48,7 @@ public class MainActivity extends ListActivity {
     @Bind(R.id.zipcodeEditText) EditText mZipCodeInput;
     @Bind(R.id.goButton) Button mGoButton;
     @Bind(R.id.newSearchButton) Button mNewSearchButton;
+   // @Bind(R.id.repWebsite) TextView mRepWebsite;
 
 
 
@@ -75,6 +79,19 @@ public class MainActivity extends ListActivity {
             }
 
         });
+
+//        mRepWebsite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//        public void onClick(View v) {
+//                Uri webpage = Uri.parse("http://www.android.com");
+//                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+//                startActivity(webIntent);
+//
+//
+//
+//
+//            }
+//        });
 
 
         //int zipcode = 97204;

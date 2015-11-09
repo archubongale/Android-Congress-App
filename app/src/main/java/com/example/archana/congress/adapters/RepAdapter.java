@@ -1,7 +1,11 @@
 package com.example.archana.congress.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,7 @@ import com.example.archana.congress.R;
 import com.example.archana.congress.models.Representative;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Guest on 11/3/15.
@@ -72,6 +77,8 @@ public class RepAdapter extends BaseAdapter{
         holder.mRepWebsite.setText(rep.getWebsite());
         holder.mRepOffice.setText(rep.getOffice());
 
+
+
         if (rep.getParty().equals("D")) {
             holder.mRepLayout.setBackgroundColor(Color.parseColor("#800099FF"));
         } else if (rep.getParty().equals("R")) {
@@ -80,7 +87,53 @@ public class RepAdapter extends BaseAdapter{
             holder.mRepLayout.setBackgroundColor(Color.parseColor("#806C6C6C"));
         }
 
+        holder.mRepPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phoneString = rep.getPhone().replaceAll("[^0-9]","");
+                Uri phone = Uri.parse("tel:" + phoneString);
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, phone);
+                if(isIntentSafe(callIntent)) {
+                    mContext.startActivity(callIntent);
+                }
+            }
+        });
+
+        holder.mRepWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String websiteString = rep.getWebsite();
+                Uri website = Uri.parse(websiteString);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, website);
+
+                if(isIntentSafe(mapIntent)) {
+                    mContext.startActivity(mapIntent);
+                }
+            }
+        });
+
+        holder.mRepOffice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String officeString = rep.getOffice().replaceAll(" ", "+");
+                Uri office = Uri.parse("geo:0,0?q=" + officeString);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, office);
+
+                if(isIntentSafe(mapIntent)) {
+                    mContext.startActivity(mapIntent);
+                }
+            }
+        });
+
+
+
         return convertView;
+    }
+
+    private boolean isIntentSafe(Intent intent) {
+        PackageManager packageManager = mContext.getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        return activities.size() > 0;
     }
 
     public static class ViewHolder {
