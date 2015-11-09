@@ -9,6 +9,9 @@ public class Representative {
     private String mParty;
     private String mGender;
     private String mBirthday;
+    private String mPhone;
+    private String mWebsite;
+    private String mOffice;
 
     public String getName() {
         return mName;
@@ -40,5 +43,29 @@ public class Representative {
 
     public void setBirthday(String birthday) {
         mBirthday = birthday;
+    }
+
+    public String getPhone() {
+        return mPhone;
+    }
+
+    public void setPhone(String phone) {
+        mPhone = phone;
+    }
+
+    public String getWebsite() {
+        return mWebsite;
+    }
+
+    public void setWebsite(String website) {
+        mWebsite = website;
+    }
+
+    public String getOffice() {
+        return mOffice;
+    }
+
+    public void setOffice(String office) {
+        mOffice = office;
     }
 }

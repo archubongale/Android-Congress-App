@@ -75,6 +75,8 @@ public class MainActivity extends ListActivity {
             }
 
         });
+
+
         //int zipcode = 97204;
     }
 
@@ -136,11 +138,17 @@ public class MainActivity extends ListActivity {
                 String repParty = representativeJSON.getString("party");
                 String repGender = representativeJSON.getString("gender");
                 String repBirthday = representativeJSON.getString("birthday");
+                String repPhone = representativeJSON.getString("phone");
+                String repWebsite = representativeJSON.getString("website");
+                String repOffice = representativeJSON.getString("office");
                 Representative representative = new Representative();
                 representative.setName(repName);
                 representative.setParty(repParty);
                 representative.setGender(repGender);
                 representative.setBirthday(repBirthday);
+                representative.setPhone(repPhone);
+                representative.setWebsite(repWebsite);
+                representative.setOffice(repOffice);
 
                 mRepresentatives.add(representative);
             }
